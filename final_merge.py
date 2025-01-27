@@ -4,8 +4,8 @@ Final merge to obtain pre-processed data
 import pandas as pd
 
 # Load the CSV files into DataFrames
-temperature_df = pd.read_csv('processed_data/processed_temperatures.csv')
-wind_df = pd.read_csv('processed_data/processed_winds.csv')
+temperature_df = pd.read_csv('OneDrive\Escritorio\Machine_Learning\LockIn\Wayqu\processed_data/processed_temperatures.csv')
+wind_df = pd.read_csv('OneDrive\Escritorio\Machine_Learning\LockIn\Wayqu\processed_data/processed_winds.csv')
 
 # Print the columns of each DataFrame for debugging
 print("Temperature DataFrame columns:", temperature_df.columns.tolist())
@@ -66,6 +66,6 @@ final_df = final_df.sort_values(by=['code_commune', 'datetime'], ascending=[True
 final_df = final_df.dropna()
 
 # Save the final DataFrame to a new CSV file
-final_df.to_csv('processed_data/test.csv', index=False)
+final_df.to_csv('OneDrive\Escritorio\Machine_Learning\LockIn\Wayqu\processed_data/final_data.csv', index=False)
 
 print("Final data has been saved to 'processed_data/final_data.csv'.")

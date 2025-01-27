@@ -10,7 +10,7 @@ import xgboost as xgb
 
 # Load the data
 
-data = pd.read_csv("OneDrive\Escritorio\Machine_Learning\LockIn\Wayqu\processed_data/test.csv")
+data = pd.read_csv("OneDrive\Escritorio\Machine_Learning\LockIn\Wayqu\processed_data/final_data.csv")
 # Extract time-based features from 'datetime'
 data['datetime'] = pd.to_datetime(data['datetime'])
 data['month'] = data['datetime'].dt.month
@@ -34,7 +34,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # Train an XGBoost model
 model = xgb.XGBRegressor(
-    objective='reg:squarederror',  # Use 'reg:squarederror' for regression
+    objective='reg:squarederror',
     n_estimators=100,
     learning_rate=0.1,
     max_depth=6,
