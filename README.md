@@ -1,7 +1,7 @@
 # Wayqu-Early-Alarm-Model
 
 ## Description
-This project aims to develop an early alarm model using the Wayqu framework. The model is designed to predict and alert users about specific events or conditions based on the provided data.
+Wayqu! as a project aims to be able to predict, with a decent time margin, water-related disasters, like mudsiles and landslides.
 
 ## Folder Structure
 - **.vscode/**: Contains Visual Studio Code configuration files.
