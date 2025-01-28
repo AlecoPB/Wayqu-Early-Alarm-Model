@@ -5,7 +5,7 @@ Normalizing and encoding data
 import pandas as pd
 
 # Load the dataset
-file_path = 'OneDrive/Documentos/GitHub/Wayqu-Early-Alarm-Model/processed_data/final_data.csv' # Location might change
+file_path = 'processed_data/final_data.csv' # Location might change
 data = pd.read_csv(file_path)
 
 
@@ -49,7 +49,7 @@ print(correlation_matrix['duration_days'])
 
 ##############
 # Ordinal risk level encoding
-
+"""
 from sklearn.preprocessing import OrdinalEncoder
 
 # Apply ordinal encoding to 'risk_level'
@@ -59,15 +59,14 @@ data['risk_level_ordinal'] = ordinal_encoder.fit_transform(data[['risk_level']])
 # Save the dataset with ordinal encoding
 data.to_csv('normalized_data/data_with_ordinal_encoding.csv', index=False)
 print("Ordinal encoding applied. Dataset saved to 'data_with_ordinal_encoding.csv'.")
-
+"""
 
 ##############
 # One-hot risk level encoding
-"""
+
 # Apply one-hot encoding to 'risk_level'
 data = pd.get_dummies(data, columns=['risk_level'], prefix='risk_level')
 
 # Save the dataset with one-hot encoding
-data.to_csv('data_with_one_hot_encoding.csv', index=False)
+data.to_csv('normalized_data/data_with_one_hot_encoding.csv', index=False)
 print("One-hot encoding applied. Dataset saved to 'data_with_one_hot_encoding.csv'.")
-"""
