@@ -15,7 +15,7 @@ Wayqu! as a project aims to be able to predict, with a decent time margin, water
 
 ## Files
 - **README.md**: This file, providing an overview of the project.
-- **presentation.pptx**: A PowerPoint presentation of the project as a whole
+- **Wayqu! Early alarm model.pptx**: A PowerPoint presentation of the project as a whole
 
 ## Precisions
 1. **Prerequisites**: 

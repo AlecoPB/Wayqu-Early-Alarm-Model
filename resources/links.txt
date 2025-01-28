@@ -1,0 +1,5 @@
+- Données climatologiques de base. https://meteo.data.gouv.fr/datasets/6569b51ae64326786e4e8e1a
+- Base nationale de Gestion ASsistée des Procédures Administratives relatives aux Risques (GASPAR). https://www.data.gouv.fr/fr/datasets/base-nationale-de-gestion-assistee-des-procedures-administratives-relatives-aux-risques-gaspar/ 
+- Tables d’export GASPAR, dictionnaire de données
+- Température quotidienne départementale (depuis janvier 2018). https://www.data.gouv.fr/fr/datasets/temperature-quotidienne-departementale-depuis-janvier-2018/ 
+- Compare the Climate and Weather in Paris, Marseille, Brest, Strasbourg, Bordeaux, and Lyon. https://weatherspark.com/compare/y/47913~51593~36173~56493~43632~50604/Comparison-of-the-Average-Weather-in-Paris-Marseille-Brest-Strasbourg-Bordeaux-and-Lyon
