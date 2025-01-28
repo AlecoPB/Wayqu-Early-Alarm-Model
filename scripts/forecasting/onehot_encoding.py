@@ -1,11 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from xgboost import XGBClassifier
-from sklearn.metrics import accuracy_score, classification_report, ConfusionMatrixDisplay
-
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 # Load the dataset
+# NOTE: The location might vary
 data = pd.read_csv("C:/Users/ajoaq/OneDrive/Documentos/GitHub\Wayqu-Early-Alarm-Model/normalized_data/data_with_ordinal_encoding.csv")
 
 # Drop 'duration_days' if they exist
@@ -50,13 +51,32 @@ xgb_model.fit(X_train_scaled, y_train)
 # Make Predictions
 y_pred = xgb_model.predict(X_test_scaled)
 
-# Model Evaluation
-accuracy = accuracy_score(y_test.values.argmax(axis=1), y_pred.argmax(axis=1))
-print(f"Model Accuracy: {accuracy:.4f}")
-print("Classification Report:")
-print(classification_report(y_test.values.argmax(axis=1), y_pred.argmax(axis=1)))
+# Evaluation Metrics
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
 
-# Confusion Matrix
-ConfusionMatrixDisplay.from_predictions(y_test.values.argmax(axis=1), y_pred.argmax(axis=1))
-plt.title("Confusion Matrix for XGBClassifier")
+print("Model Performance:")
+print(f"Mean Absolute Error (MAE): {mae:.4f}")
+print(f"Mean Squared Error (MSE): {mse:.4f}")
+print(f"R² Score: {r2:.4f}")
+
+## Plotting
+# Scatter plot of actual vs predicted values
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=y_test, y=y_pred, alpha=0.5)
+plt.xlabel("Actual Risk Level")
+plt.ylabel("Predicted Risk Level")
+plt.title("Actual vs Predicted Risk Levels")
+plt.axline((0, 0), slope=1, color="red", linestyle="--")  # Ideal predictions line
+plt.show()
+
+# Residual plot (errors)
+residuals = y_test - y_pred
+plt.figure(figsize=(8, 6))
+sns.histplot(residuals, bins=30, kde=True)
+plt.xlabel("Prediction Error (Residuals)")
+plt.ylabel("Frequency")
+plt.title("Distribution of Prediction Errors")
+plt.axvline(0, color="red", linestyle="--")
 plt.show()

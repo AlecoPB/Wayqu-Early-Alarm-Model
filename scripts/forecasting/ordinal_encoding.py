@@ -11,11 +11,12 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 # Load dataset (with ordinal encoding and duration_days dropped)
+# NOTE: The location might vary
 data = pd.read_csv('C:/Users/ajoaq/OneDrive/Documentos/GitHub\Wayqu-Early-Alarm-Model/normalized_data/data_with_ordinal_encoding.csv')
 
-# Drop 'duration_days' and 'risk_level' if they exist
-if 'duration_days' in data.columns:
-    data.drop(columns=['duration_days', 'risk_level'], inplace=True)
+# Drop 'risk_level' if it exists
+if 'risk_level' in data.columns:
+    data.drop(columns=['risk_level'], inplace=True)
 
 # Define Features (X) and Target (y)
 X = data.drop(columns=['risk_level_ordinal', 'datetime'])  # Drop target + datetime
