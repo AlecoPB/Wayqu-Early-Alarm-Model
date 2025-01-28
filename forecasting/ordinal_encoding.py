@@ -1,7 +1,9 @@
 """
 Model trained with ordinal encoding of risk level
 """
+import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBRegressor
@@ -9,11 +11,11 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 # Load dataset (with ordinal encoding and duration_days dropped)
-data = pd.read_csv('normalized_data/data_with_ordinal_encoding.csv')
+data = pd.read_csv('C:/Users/ajoaq/OneDrive/Documentos/GitHub\Wayqu-Early-Alarm-Model/normalized_data/data_with_ordinal_encoding.csv')
 
-# Drop 'duration_days' if it exists
+# Drop 'duration_days' and 'risk_level' if they exist
 if 'duration_days' in data.columns:
-    data.drop(columns=['duration_days'], inplace=True)
+    data.drop(columns=['duration_days', 'risk_level'], inplace=True)
 
 # Define Features (X) and Target (y)
 X = data.drop(columns=['risk_level_ordinal', 'datetime'])  # Drop target + datetime
@@ -46,19 +48,22 @@ print(f"Mean Absolute Error (MAE): {mae:.4f}")
 print(f"Mean Squared Error (MSE): {mse:.4f}")
 print(f"R² Score: {r2:.4f}")
 
-## Test for data leakage
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# Check correlation again
-correlation_matrix = pd.DataFrame(X_train, columns=X.columns).corrwith(pd.Series(y_train))
-correlation_matrix.sort_values(ascending=False, inplace=True)
-
-# Visualize
-plt.figure(figsize=(10, 5))
-sns.barplot(x=correlation_matrix.index, y=correlation_matrix.values)
-plt.xticks(rotation=90)
-plt.title("Feature Correlations with Target (Risk Level)")
+## Plotting
+# Scatter plot of actual vs predicted values
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x=y_test, y=y_pred, alpha=0.5)
+plt.xlabel("Actual Risk Level")
+plt.ylabel("Predicted Risk Level")
+plt.title("Actual vs Predicted Risk Levels")
+plt.axline((0, 0), slope=1, color="red", linestyle="--")  # Ideal predictions line
 plt.show()
 
-print(correlation_matrix)
+# Residual plot (errors)
+residuals = y_test - y_pred
+plt.figure(figsize=(8, 6))
+sns.histplot(residuals, bins=30, kde=True)
+plt.xlabel("Prediction Error (Residuals)")
+plt.ylabel("Frequency")
+plt.title("Distribution of Prediction Errors")
+plt.axvline(0, color="red", linestyle="--")  # Perfect predictions reference
+plt.show()
