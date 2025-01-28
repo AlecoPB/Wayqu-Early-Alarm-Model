@@ -15,35 +15,13 @@ This project aims to develop an early alarm model using the Wayqu framework. The
 
 ## Files
 - **README.md**: This file, providing an overview of the project.
-- **presentation.pptx**: A PowerPoint presentation related to the project.
+- **presentation.pptx**: A PowerPoint presentation of the project as a whole
 
-## Getting Started
+## Precisions
 1. **Prerequisites**: 
-   - List any software, libraries, or tools required to run the project.
-   - Example: `Python 3.8`, `XGBoost`, `Pandas`, `Matplotlib`
+   - `Python 3.8`, `XGBoost`, `Pandas`, `Matplotlib`, `Seaborn`, `Sklearn`
 
-2. **Installation**: 
-   - Provide step-by-step instructions on how to install the project and its dependencies.
-   - Example:
-     ```bash
-     git clone https://github.com/yourusername/Wayqu-Early-Alarm-Model.git
-     cd Wayqu-Early-Alarm-Model
-     pip install -r requirements.txt
-     ```
-
-3. **Usage**: 
-   - Explain how to use the project, including any command-line instructions or configuration settings.
-   - Example: 
-     ```bash
-     python App/main.py
-     ```
-
-## Contributing
-- Provide guidelines for contributing to the project, including how to submit issues and pull requests.
-- Example:
-  ```markdown
-  1. Fork the repository.
-  2. Create a new branch (`git checkout -b feature/your-feature-name`).
-  3. Make your changes and commit (`git commit -am 'Add some feature'`).
-  4. Push to the branch (`git push origin feature/your-feature-name`).
-  5. Create a new Pull Request.
+2. **Comments**: 
+   - Raw data is not present on the GitHub repository.
+   - All data used for training is present on the GitHub repository.
+   - The training scripts are on the scripts/forecasting folder
