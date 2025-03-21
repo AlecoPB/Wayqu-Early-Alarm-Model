@@ -104,3 +104,20 @@ def extract_temperatures(csv):
 
     # Save as csv
     avg_temperature.to_csv('processed_data/average_temperatures.csv', sep=';', index=False)
+
+
+def cumulative_rainfall(csv):
+    """Calculates the cumulative raifall and adds it to the table
+    csv : file to extract the DataFrame
+    """
+
+    # Create DataFrame from csv file
+    rain_df = from_file(csv, ';')
+
+    ## IMPORTANT - CORRECT AND FINISH ###
+    #   Sort by commune and datetime
+    rain_df = rain_df.sort_values(by=['code_commune', 'datetime'])
+
+    rain_df['cumulative_rainfall'] = (
+        rain_df.groupby(window=7, min_periods=1).sum().reset_index(level=0, drop=True)
+    )
