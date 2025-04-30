@@ -46,7 +46,10 @@ def extract_useful_data_from_meteo(cvs, n_dep):
     """
     # Import weather data and the list of communes
     o_df = from_file(cvs, ';')
-    df = o_df[['NUM_POSTE', 'AAAAMMJJ', 'RR', 'TNTXM', 'FFM']].copy()
+    ## TEST TEST TEST df = o_df[['NUM_POSTE', 'AAAAMMJJ', 'RR', 'TNTXM', 'FFM']].copy()
+    df = o_df[['NUM_POSTE', 'AAAAMMJJ', 'RR', 'DRR', 'TNSOL', 'DG', 'TNTXM', 'FFM']].copy()
+    ## TEST TEST TEST I'm testint new columns
+    
     list_of_communes = from_file('unique_communes.csv', ';')
 
     # Only from 1987 onwards
@@ -75,7 +78,7 @@ def extract_useful_data_from_meteo(cvs, n_dep):
 
     # Format i with leading zeros for single-digit numbers
     filename = f'processed_data/processed_departments/processed_dep_{n_dep:02d}.csv'
-
+    
     # Save as CSV
     filtered_df.to_csv(filename, sep=';', index=False)
 
